@@ -1,11 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import fs from 'fs';
-import path from 'path';
-
-const envFile = path.resolve(__dirname, '.env');
-if (fs.existsSync(envFile)) {
-  process.loadEnvFile(envFile);
-}
+import { config } from './config/env';
 
 const isCI = !!process.env.CI;
 
@@ -17,11 +11,8 @@ export default defineConfig({
   workers: isCI ? 1 : undefined,
   reporter: [['list'], ['html', { open: isCI ? 'never' : 'on-failure' }]],
   use: {
-    baseURL: process.env.BASE_URL,
-    httpCredentials:
-      process.env.HTTP_USERNAME && process.env.HTTP_PASSWORD
-        ? { username: process.env.HTTP_USERNAME, password: process.env.HTTP_PASSWORD }
-        : undefined,
+    baseURL: config.baseUrls.qauto,
+    httpCredentials: config.httpCredentials,
     actionTimeout: 10_000,
     trace: isCI ? 'on-first-retry' : 'retain-on-failure',
     screenshot: 'only-on-failure',
