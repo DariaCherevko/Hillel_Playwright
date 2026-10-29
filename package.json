@@ -10,7 +10,9 @@
     "test:debug": "playwright test --project=chromium --debug",
     "report": "playwright show-report",
     "codegen": "playwright codegen",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:qauto": "playwright test --config qauto.config.ts",
+    "test:qauto2": "playwright test --config qauto2.config.ts"
   },
   "keywords": [],
   "author": "",

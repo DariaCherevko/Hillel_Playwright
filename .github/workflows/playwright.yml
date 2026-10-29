@@ -4,6 +4,13 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
+env:
+  QAUTO_BASE_URL: ${{ secrets.QAUTO_BASE_URL }}
+  QAUTO2_BASE_URL: ${{ secrets.QAUTO2_BASE_URL }}
+  HTTP_USERNAME: ${{ secrets.HTTP_USERNAME }}
+  HTTP_PASSWORD: ${{ secrets.HTTP_PASSWORD }}
+
 jobs:
   test:
     timeout-minutes: 60
