@@ -23,4 +23,8 @@ export const config = {
     username: required('HTTP_USERNAME'),
     password: required('HTTP_PASSWORD'),
   },
+  user: {
+    email: required('USER_EMAIL'),
+    password: required('USER_PASSWORD'),
+  },
 };
