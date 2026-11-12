@@ -12,7 +12,12 @@
     "codegen": "playwright codegen",
     "typecheck": "tsc --noEmit",
     "test:qauto": "playwright test --config qauto.config.ts",
-    "test:qauto2": "playwright test --config qauto2.config.ts"
+    "test:qauto2": "playwright test --config qauto2.config.ts",
+    "docker:build": "docker build -t hillel-pw .",
+    "docker:test": "docker run --rm --init --ipc=host --env-file .env -e CI=true -v \"%cd%/playwright-report:/app/playwright-report\" hillel-pw",
+    "docker:test:chromium": "docker run --rm --init --ipc=host --env-file .env -e CI=true -v \"%cd%/playwright-report:/app/playwright-report\" hillel-pw npx playwright test --project=chromium",
+    "docker:test:firefox": "docker run --rm --init --ipc=host --env-file .env -e CI=true -v \"%cd%/playwright-report:/app/playwright-report\" hillel-pw npx playwright test --project=firefox"
+
   },
   "keywords": [],
   "author": "",
